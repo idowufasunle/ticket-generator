@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Conference ticket generator</title>
+    <link
+      rel="font-family"
+      href="./assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf"
+    />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+
+    <script src="./tailwind.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "hsl(252, 6%, 83%)",
+              secondary: "hsl(248, 70%, 10%)",
+              accent:  "hsl(7, 71%, 60%)",
+              accent_foreground: "hsl(7, 71%, 60%)",
+              accent_background: "hsl(7, 88%, 67%)",
+              foreground:  "hsl(0, 0%, 100%)",
+              background: "hsl(248, 70%, 10%)",
+            },
+            fontFamily: {
+              Inconsolata: ['"Inconsolata"', "monospace"],
+            },
+            backgroundImage: {
+              background_desktop:
+                "url('./assets/images/background-desktop.png')",
+              background_mobile: "url('./assets/images/background-mobile.png')",
+              ticket_background: "url('./assets/images/pattern-ticket.svg')",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      class="min-h-screen font-Inconsolata text-primary bg-background_mobile md:bg-background_desktop bg-no-repeat bg-cover"
+    >
+      <div
+        class="logo_container flex items-center justify-center gap-4 pt-8 px-4"
+      >
+        <img
+          class="w-8 aspect-square"
+          src="./assets/images/logo-mark.svg"
+          alt="Conference Logo"
+        />
+        <h1 class="text-3xl font-extrabold text-foreground">Coding Conf</h1>
+      </div>
+
+      <div class="intro text-center mt-8 max-w-xl mx-auto">
+        <h1 class="text-3xl font-extrabold md:text-4xl mb-4 text-foreground">
+          Your Journey to Coding Conf 2025 Starts Here!
+        </h1>
+        <p class="text-lg md:text-lg mb-6">
+          Secure your spot at next year's biggest coding conference.
+        </p>
+      </div>
+
+      <!-- Form starts -->
+
+      <div class="form_container max-w-md md:max-w-lg mx-auto p-6 ">
+        <form class="space-y-5" id="ticket_form">
+          <div>
+            <h1 class="block text-white mb-1"  
+              >Upload Avatar</h1
+            >
+            <label for="avatar">
+           <div  
+              class="border-2 border-dashed border-primary/30 bg-primary/10 hover:bg-primary/20 hover:border-primary/50 rounded-lg p-6 text-center cursor-pointer" id="fileInput"
+            >
+              <img
+                src="./assets/images/icon-upload.svg"
+                alt="Upload Icon"
+                class="mx-auto bg-primary/10 hover:bg-accent/20 rounded-lg p-2"
+              />
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept=".jpg,.png"
+                class="hidden"
+              />
+              <p class="text-lg tracking-wider">
+                Drag and drop or click to upload
+              </p>
+           
+              </label>
+
+            </div>
+            <p class="text-xs flex items-center gap-1 mt-2">
+              <img src="./assets/images/icon-info.svg" alt="info_icon" />Upload
+              your photo (JPG or PNG, max size: 500KB).
+            </p>
+          </div>
+
+          <div>
+            <label class="block text-foreground" for="fullName"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="full name here"
+              class="w-full px-3 py-4 border border-background bg-primary/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue"
+            />
+          </div>
+
+          <div>
+            <label class="block text-foreground mb-2" for="email"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              class="w-full px-3 py-4 border border-background bg-primary/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue"
+            />
+          </div>
+
+          <div>
+            <label class="block text-foreground mb-2" for="github"
+              >GitHub Username</label
+            >
+            <input
+              type="text"
+              id="github"
+              name="github"
+              placeholder="@yourusername"
+              class="w-full px-3 py-4 border border-background bg-primary/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue"
+            />
+          </div>
+          <button
+          id="submitButton"
+          
+            type="submit"
+            class="w-full bg-accent text-background text-xl font-bold py-4 rounded-lg hover:bg-accent_background transition-colors duration-300"
+          >
+            Generate My Ticket
+          </button>
+        </form>
+      </div>
+      <!-- Form ends -->
+    </div>
+
+    <script src="./index.js"></script>
+   <script>
+    // Get a reference to the file input
+    const fileInput = document.getElementById('avatar');
+
+    // Listen for the change event so we can capture the file
+    fileInput.addEventListener('change', (e) => {
+            console.log(" DEBUG 1. ");
+
+        // Get a reference to the file
+        const file = e.target.files?.[0];
+
+        // Encode the file using the FileReader API
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            console.log(" DEBUG 1. ", reader.result);
+            localStorage.setItem("avatar", reader.result)
+            // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
+        };
+        reader.readAsDataURL(file);
+    });
+   </script>
+
+  </body>
+</html>

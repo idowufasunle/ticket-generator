@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Ticket preview page</title>
+    <link
+      rel="font-family"
+      href="./assets/fonts/Inconsolata-VariableFont_wdth,wght.ttf"
+    />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+
+    <script src="./tailwind.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "hsl(252, 6%, 83%)",
+              secondary: "hsl(248, 70%, 10%)",
+              accent:  "hsl(7, 71%, 60%)",
+              accent_foreground: "hsl(7, 71%, 60%)",
+              accent_background: "hsl(7, 88%, 67%)",
+              foreground:  "hsl(0, 0%, 100%)",
+              background: "hsl(245, 15%, 58%)",
+            },
+            fontFamily: {
+              Inconsolata: ['"Inconsolata"', "monospace"],
+            },
+            backgroundImage: {
+              background_desktop:
+                "url('./assets/images/background-desktop.png')",
+              background_mobile: "url('./assets/images/background-mobile.png')",
+              ticket_background: "url('./assets/images/pattern-ticket.svg')",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <main
+      class="ticket_section min-h-screen text-primary bg-background_mobile md:bg-background_desktop space-y-20"
+    >
+      <div class="ticket_page space-y-5">
+        <div
+        class="logo_container flex items-center justify-center gap-4 pt-8 px-4"
+      >
+        <img
+          class="w-8 aspect-square"
+          src="./assets/images/logo-mark.svg"
+          alt="Conference Logo"
+        />
+        <h1 class="text-3xl font-extrabold text-foreground">Coding Conf</h1>
+      </div>
+
+          <div class="space-y-5">
+            <h1
+              class="text-3xl font-extrabold md:text-4xl text-white text-center max-w-md md:max-w-xl m-auto "
+            >
+              Congrats, <span id="fullName" class="bg-gradient-to-r from-accent_background to-foreground bg-clip-text text-transparent"><!-- Full Name --></span> Your ticket is ready.
+            </h1>
+            <p class="text-lg font-lg max-w-sm mx-auto text-center">
+              We've emailed your ticket to
+             <span id="email" class="text-accent">jonatan@email.com</span>
+              <!-- Email Address -->
+              and will send updates in the run up to the event.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="ticket_container flex justify-center py-2 bg-ticket_background bg-contain bg-center bg-no-repeat "
+        >
+          <div class="ticket_left_side flex flex-col gap-2 ">
+            <div
+        class="logo_container flex gap-1 p-1"
+      >
+        <img
+          class="w-8 aspect-square"
+          src="./assets/images/logo-mark.svg"
+          alt="Conference Logo"
+        /> 
+        <div>
+        <h1 class="text-xl font-bold text-white">Coding Conf</h1>
+              <p>Jan 31, 2025 / Austin, TX</p>
+        </div>
+            </div>
+
+            <div
+              class="ticket_info_container text-center flex items-center gap-2"
+            >
+              <img
+                alt="avatar"
+                class="rounded-lg w-16 aspect-square"
+                id="avatar"
+              />
+              <div class="flex flex-col items-center p-2">
+                <p id="ticketfullName" class="text-xl font-bold">
+                  <!-- Full Name -->
+                </p>
+                <p class="flex items-center">
+                  <img
+                    src="./assets/images/icon-github.svg"
+                    alt="GitHub Icon"
+                  /><span  id="github"> @jonatankristof0101</span><!-- GitHub Username -->
+                </p>
+              </div>
+            </div>
+          </div>
+          <p id="ticket-number" class="ticket_number_container pt-10 text-2xl text-white/50 rotate-90">#01609<!-- Ticket Number --></p>
+        </div>
+      </div>
+    </main>
+
+    <script src="./index.js"></script>
+</body>
+</html>
