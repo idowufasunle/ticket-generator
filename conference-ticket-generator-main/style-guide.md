@@ -51,9 +51,3 @@ The designs were created to the following widths:
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </footer>
-
-  function check(){
-  document.getElementById(`newfullName`).textContent = document.ticketForm.fullName.value;
-}
-
-onclick="check(), document.location='ticket.html'"
